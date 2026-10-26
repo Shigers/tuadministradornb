@@ -1,17 +1,29 @@
-# tu_administrador_nb
+# TuAdministradorNB
 
-A new Flutter project.
+Archivo digital para empresas: añade facturas, nóminas, contratos y hojas de cálculo
+desordenados y la app los clasifica, los deja buscables y los exporta ordenados en un
+ZIP con su estructura real. Hecho con Flutter (web, Windows y Android).
 
-## Getting Started
+- **Local-first:** los documentos se guardan en el dispositivo (Hive / IndexedDB), aislados por usuario.
+- **Acceso con cuenta:** autenticación mediante Supabase Auth.
+- **Los originales nunca se modifican.**
 
-This project is a starting point for a Flutter application.
+En producción: https://tuadministradornb.vercel.app (PWA instalable).
 
-A few resources to get you started if this is your first Flutter project:
+## Desarrollo
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+```bash
+flutter pub get
+flutter run -d chrome        # desarrollo web
+flutter analyze
+flutter test
+flutter build web --release  # build de producción
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Despliegue
+
+Cada push a `main` despliega automáticamente en Vercel: `vercel.json` instala Flutter y
+ejecuta `flutter build web --release`. La clave de Supabase es publicable (segura en el
+cliente) y puede sobreescribirse con `--dart-define=SUPABASE_URL=... --dart-define=SUPABASE_ANON_KEY=...`.
+
+Más detalle del proyecto en `docs/00-PROYECTO.md`.
