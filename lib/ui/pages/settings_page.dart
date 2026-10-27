@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -7,6 +8,7 @@ import '../../core/theme.dart';
 import '../../core/utils.dart';
 import '../../data/app_controller.dart';
 import '../dialogs.dart';
+import '../watch_folder_section.dart';
 import '../widgets.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -295,6 +297,10 @@ class _SettingsPageState extends State<SettingsPage> {
             );
           },
         ),
+        if (!kIsWeb) ...[
+          const SizedBox(height: 22),
+          const WatchFolderSection(),
+        ],
         const SizedBox(height: 22),
         SectionCard(
           title: 'Cuenta',
